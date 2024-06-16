@@ -1,5 +1,6 @@
 package br.gov.sp.fatec.springboot3app.entity;
 
+import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -27,16 +28,20 @@ public class Usuario {
     @Column(name = "usr_senha")
     private String senha;
 
+    @Column(name = "usr_demissao")
+    private Date demissao;
+
     @OneToMany(mappedBy = "usuario")
     private Set<Anotacao> anotacoes;
 
     @ManyToMany(mappedBy = "usuarios")
     private Set<Autorizacao> autorizacoes;
 
-    public Usuario(String nome, String senha) {
+    public Usuario(String nome, String senha, Date demissao) {
         this();
         this.nome = nome;
         this.senha = senha;
+        this.demissao = demissao;
     }
 
     public Usuario() {
@@ -66,6 +71,14 @@ public class Usuario {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public Date getDemissao() {
+        return demissao;
+    }
+
+    public void setDemissao(Date demissao) {
+        this.demissao = demissao;
     }
 
     public Set<Anotacao> getAnotacoes() {
