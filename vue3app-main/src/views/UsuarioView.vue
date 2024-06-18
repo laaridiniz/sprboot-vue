@@ -79,8 +79,13 @@ function limparCampos() {
   }
 
 // Função para determinar a situação de um usuário
-function situacao(demissao: Date | null) {
-  return demissao ? 'Demitido em ' : 'Ativo';
+function situacao(demissao) {
+  if (!demissao) {
+    return "Ativo";
+  }
+  const dataDemissao = new Date(demissao);
+  const dataFormatada = dataDemissao.toLocaleDateString('pt-BR');
+  return `Demitido em ${dataFormatada}`;
 }
 
   onMounted(() => {
