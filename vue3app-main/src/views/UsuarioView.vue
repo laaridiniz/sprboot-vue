@@ -26,7 +26,6 @@
             </tr>
           </tbody>
         </table>
-      <button @click="limparConsulta">Mostrar Todos</button>
     </div>
 </template>
 
